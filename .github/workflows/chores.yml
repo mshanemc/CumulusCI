@@ -58,3 +58,15 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: |
                   gh pr create --fill --label 'auto-pr'
+    test_sfdx_release_candidate:
+        uses: ./.github/workflows/release_test_sfdx.yml
+        with:
+            sfdx-release-channel: stable-rc
+        secrets:
+            CUMULUSCI_ORG_packaging: ${{ secrets.CUMULUSCI_ORG_packaging }}
+            CUMULUSCI_SERVICE_github: ${{ secrets.CUMULUSCI_SERVICE_github }}
+            CCITEST_APP_KEY: ${{ secrets.CCITEST_APP_KEY }}
+            SFDX_CLIENT_ID: ${{ secrets.SFDX_CLIENT_ID }}
+            SFDX_HUB_KEY: ${{ secrets.SFDX_HUB_KEY }}
+            SFDX_HUB_KEY_BASE64: ${{ secrets.SFDX_HUB_KEY_BASE64 }}
+            SFDX_HUB_USERNAME: ${{ secrets.SFDX_HUB_USERNAME }}
